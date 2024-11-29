@@ -1,0 +1,18 @@
+name: Tests for build-push-action
+on:
+  workflow_dispatch:
+
+jobs:
+  actions-tests:
+    name: Perform test
+    runs-on:
+      - nscloud-ubuntu-22.04-1x2
+    steps:
+      - uses: namespacelabs/nscloud-checkout-action@HEAD
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+
